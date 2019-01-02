@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-
-@interface ViewController ()
+#import "JFRouterProtocol.h"
+@interface ViewController () <JFRouterMapProtocol>
 
 @end
 
@@ -16,8 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.title = @"哈哈";
+    self.view.backgroundColor = [UIColor grayColor];
+
 }
-
-
+ROUTER_INITIALIZE_METHOD(arg){
+    NSLog(@"%@",arg);
+    return [ViewController new];
+}
+ROUTER_SCHEME {
+    return @"jfwallet";
+}
 @end

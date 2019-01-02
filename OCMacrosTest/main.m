@@ -8,28 +8,22 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-#define JFROUTER_INITIALIZE_METHOD() \
-+ (instancetype)routerHandle_initialize:(NSDictionary *)params
-#define JFROUTER_SYNC_METHOD(return_type,name) \
-+ (return_type)routerHandle_##name:(NSDictionary *)params
-#define JFROUTER_ASYNC_METHOD(name,arg) \
-+ (void)routerHandle_##name:(NSDictionary *)arg callback:(id)callback
+#define ROUTER_PRE routerHandle
 
+#define _ROUTER_INITIALIZE_SEL ROUTER_PRE ## _ ## initialize:
 
+#define ROUTER_INITIALIZE_SEL()
+
+#define _JFROUTER_INITIALIZE_METHOD(A) \
++ (instancetype)A(NSDictionary *)params
+
+#define JFROUTER_INITIALIZE_METHOD() _JFROUTER_INITIALIZE_METHOD(ROUTER_INITIALIZE_SEL())
 
 @interface Person : NSObject
 //JFROUTER_SYNC_METHOD(void, say, arg);
 @end
 
 @implementation Person
-JFROUTER_INITIALIZE_METHOD(){
-    Person *p = [Person new];
-    NSLog(@"%@",params);
-    return p;
-}
-JFROUTER_SYNC_METHOD(void, say) {
-    NSLog(@"%@",params);
-}
 @end
 
 
@@ -40,7 +34,12 @@ JFROUTER_SYNC_METHOD(void, say) {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+//        、_ROUTER_INITIALIZE_SEL
         
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic addEntriesFromDictionary:nil];
+        
+        NSLog(@"%@",dic);
 //        Method m = class_getInstanceMethod(object_getClass([Person class]), @selector(routerHandle_say:eat:xx:xx1:qwer:));
 //        SEL methodName = method_getName(m);
 //        NSLog(@"方法名：%@", NSStringFromSelector(methodName));
@@ -71,17 +70,17 @@ int main(int argc, const char * argv[]) {
 //        Person *person = [Person new];
 //        [Person routerHandle_say_arg:]
 //        [Person say]
-        NSString *text = @"http://www.baidu.com/qwer?a=s://";
-        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com/goood?a=http://hao123.com/x?d=c"];
-        NSURL *url1 = [NSURL URLWithString:@"http://www.baidu.com/?a=s"];
-        NSURL *url2 = [NSURL URLWithString:@"http://www.baidu.com/qwer?a=s://"];
-        NSURL *url3 = [NSURL URLWithString:@"http://www.baidu.com/qwer/ppouw?a=s"];
-        
-        NSURL *url4 = [NSURL URLWithString:@"//qwer/ppouw?a=s"];
-        NSArray *array = [[url4 path] componentsSeparatedByString:@"/"];
-        
-        Class cls = NSClassFromString(@"qwert");
-        Class cls1 = NSClassFromString(@"Person");
+//        NSString *text = @"http://www.baidu.com/qwer?a=s://";
+//        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com/goood?a=http://hao123.com/x?d=c"];
+//        NSURL *url1 = [NSURL URLWithString:@"http://www.baidu.com/?a=s"];
+//        NSURL *url2 = [NSURL URLWithString:@"http://www.baidu.com/qwer?a=s://"];
+//        NSURL *url3 = [NSURL URLWithString:@"http://www.baidu.com/qwer/ppouw?a=s"];
+//
+//        NSURL *url4 = [NSURL URLWithString:@"//qwer/ppouw?a=s"];
+//        NSArray *array = [[url4 path] componentsSeparatedByString:@"/"];
+//
+//        Class cls = NSClassFromString(@"qwert");
+//        Class cls1 = NSClassFromString(@"Person");
         
     }
     return 0;

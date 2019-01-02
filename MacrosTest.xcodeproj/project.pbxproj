@@ -19,6 +19,9 @@
 		3A0ED30F21DBADD000444A56 /* JFRouterDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ED30E21DBADD000444A56 /* JFRouterDemoUITests.m */; };
 		3A0ED32021DBB35800444A56 /* JFRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ED31F21DBB35800444A56 /* JFRouter.m */; };
 		3A0ED32521DBD3DF00444A56 /* JFWalletTypeRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0ED32421DBD3DF00444A56 /* JFWalletTypeRouter.m */; };
+		3AB96FE621DD05F300329721 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3AB96FE521DD05F300329721 /* main.c */; };
+		3AB96FEC21DD330100329721 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB96FEB21DD330100329721 /* MainTableViewController.m */; };
+		3AB96FEF21DD34D700329721 /* ServiceA.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB96FEE21DD34D700329721 /* ServiceA.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		3AB96FE121DD05F300329721 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +97,12 @@
 		3A0ED32121DBC85F00444A56 /* JFRouterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFRouterProtocol.h; sourceTree = "<group>"; };
 		3A0ED32321DBD3DF00444A56 /* JFWalletTypeRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFWalletTypeRouter.h; sourceTree = "<group>"; };
 		3A0ED32421DBD3DF00444A56 /* JFWalletTypeRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFWalletTypeRouter.m; sourceTree = "<group>"; };
+		3AB96FE321DD05F300329721 /* MacroCCC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacroCCC; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AB96FE521DD05F300329721 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		3AB96FEA21DD330100329721 /* MainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
+		3AB96FEB21DD330100329721 /* MainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
+		3AB96FED21DD34D700329721 /* ServiceA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceA.h; sourceTree = "<group>"; };
+		3AB96FEE21DD34D700329721 /* ServiceA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceA.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +141,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3AB96FE021DD05F300329721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -134,6 +159,7 @@
 				3A0ED2E921DBADCD00444A56 /* JFRouterDemo */,
 				3A0ED30221DBADD000444A56 /* JFRouterDemoTests */,
 				3A0ED30D21DBADD000444A56 /* JFRouterDemoUITests */,
+				3AB96FE421DD05F300329721 /* MacroCCC */,
 				3A0ED2D021DB8AB200444A56 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -146,6 +172,7 @@
 				3A0ED2E821DBADCD00444A56 /* JFRouterDemo.app */,
 				3A0ED2FF21DBADD000444A56 /* JFRouterDemoTests.xctest */,
 				3A0ED30A21DBADD000444A56 /* JFRouterDemoUITests.xctest */,
+				3AB96FE321DD05F300329721 /* MacroCCC */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,8 +200,12 @@
 				3A0ED31A21DBADE400444A56 /* JFRouter-alpha */,
 				3A0ED2EA21DBADCD00444A56 /* AppDelegate.h */,
 				3A0ED2EB21DBADCD00444A56 /* AppDelegate.m */,
+				3AB96FED21DD34D700329721 /* ServiceA.h */,
+				3AB96FEE21DD34D700329721 /* ServiceA.m */,
 				3A0ED2ED21DBADCD00444A56 /* ViewController.h */,
 				3A0ED2EE21DBADCD00444A56 /* ViewController.m */,
+				3AB96FEA21DD330100329721 /* MainTableViewController.h */,
+				3AB96FEB21DD330100329721 /* MainTableViewController.m */,
 				3A0ED2F021DBADCD00444A56 /* Main.storyboard */,
 				3A0ED2F321DBADD000444A56 /* Assets.xcassets */,
 				3A0ED2F521DBADD000444A56 /* LaunchScreen.storyboard */,
@@ -219,6 +250,14 @@
 				3A0ED32421DBD3DF00444A56 /* JFWalletTypeRouter.m */,
 			);
 			path = "JFRouter-QB";
+			sourceTree = "<group>";
+		};
+		3AB96FE421DD05F300329721 /* MacroCCC */ = {
+			isa = PBXGroup;
+			children = (
+				3AB96FE521DD05F300329721 /* main.c */,
+			);
+			path = MacroCCC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +350,23 @@
 			productReference = 3A0ED30A21DBADD000444A56 /* JFRouterDemoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		3AB96FE221DD05F300329721 /* MacroCCC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AB96FE921DD05F300329721 /* Build configuration list for PBXNativeTarget "MacroCCC" */;
+			buildPhases = (
+				3AB96FDF21DD05F300329721 /* Sources */,
+				3AB96FE021DD05F300329721 /* Frameworks */,
+				3AB96FE121DD05F300329721 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacroCCC;
+			productName = MacroCCC;
+			productReference = 3AB96FE321DD05F300329721 /* MacroCCC */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -338,6 +394,9 @@
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 3A0ED2E721DBADCD00444A56;
 					};
+					3AB96FE221DD05F300329721 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
 			buildConfigurationList = 3A0ED2CA21DB8AB200444A56 /* Build configuration list for PBXProject "MacrosTest" */;
@@ -358,6 +417,7 @@
 				3A0ED2E721DBADCD00444A56 /* JFRouterDemo */,
 				3A0ED2FE21DBADD000444A56 /* JFRouterDemoTests */,
 				3A0ED30921DBADD000444A56 /* JFRouterDemoUITests */,
+				3AB96FE221DD05F300329721 /* MacroCCC */,
 			);
 		};
 /* End PBXProject section */
@@ -410,8 +470,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AB96FEF21DD34D700329721 /* ServiceA.m in Sources */,
 				3A0ED2EF21DBADCD00444A56 /* ViewController.m in Sources */,
 				3A0ED2FA21DBADD000444A56 /* main.m in Sources */,
+				3AB96FEC21DD330100329721 /* MainTableViewController.m in Sources */,
 				3A0ED32021DBB35800444A56 /* JFRouter.m in Sources */,
 				3A0ED32521DBD3DF00444A56 /* JFWalletTypeRouter.m in Sources */,
 				3A0ED2EC21DBADCD00444A56 /* AppDelegate.m in Sources */,
@@ -431,6 +493,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A0ED30F21DBADD000444A56 /* JFRouterDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AB96FDF21DD05F300329721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AB96FE621DD05F300329721 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +811,22 @@
 			};
 			name = Release;
 		};
+		3AB96FE721DD05F300329721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3AB96FE821DD05F300329721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -794,6 +880,15 @@
 			buildConfigurations = (
 				3A0ED31821DBADD000444A56 /* Debug */,
 				3A0ED31921DBADD000444A56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AB96FE921DD05F300329721 /* Build configuration list for PBXNativeTarget "MacroCCC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AB96FE721DD05F300329721 /* Debug */,
+				3AB96FE821DD05F300329721 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

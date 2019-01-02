@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <objc/message.h>
 
-static NSMutableDictionary*globalRouterMapTable(){
+static NSMutableDictionary *routerMapTable() {
     static NSMutableDictionary *routerMapTable;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -19,7 +19,7 @@ static NSMutableDictionary*globalRouterMapTable(){
     return routerMapTable;
 }
 
-static NSMutableDictionary*globalCustomHostMapTable(){
+static NSMutableDictionary *customHostMapTable() {
     static NSMutableDictionary *customHostMapTable;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -33,11 +33,11 @@ static NSMutableDictionary*globalCustomHostMapTable(){
 
 + (void)load {
     __block id observer = [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-         dispatch_async(dispatch_queue_create("com.jfrouter.initialize", DISPATCH_QUEUE_CONCURRENT), ^{
-             [self setup];
-         });
-         [[NSNotificationCenter defaultCenter] removeObserver:observer];
-     }];
+        dispatch_async(dispatch_queue_create("com.jfrouter.initialize", DISPATCH_QUEUE_CONCURRENT), ^{
+            [self setup];
+        });
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+    }];
 }
 
 + (void)setup {
@@ -45,15 +45,15 @@ static NSMutableDictionary*globalCustomHostMapTable(){
     const char **classes = nil;
     NSString *executablePath = [[NSBundle mainBundle] executablePath];
     classes = objc_copyClassNamesForImage([executablePath UTF8String], &count);
-    NSLog(@"类：%d个",count);
+    NSLog(@"类：%d个", count);
     Protocol * protocol = @protocol(JFRouterMapProtocol);
     for (int idx = 0; idx < count; idx++) {
         Class cls = NSClassFromString([NSString stringWithUTF8String:classes[idx]]);
-        if (class_getClassMethod(cls, @selector(conformsToProtocol:)) && [cls conformsToProtocol:protocol]){
+        if (class_getClassMethod(cls, @selector(conformsToProtocol:)) && [cls conformsToProtocol:protocol]) {
             if ([cls respondsToSelector:@selector(customHost)]) {
                 NSString *customHost = [cls customHost];
                 if (customHost) {
-                    globalCustomHostMapTable()[customHost] = cls;
+                    customHostMapTable()[customHost] = cls;
                 }
             }
         }
@@ -61,22 +61,25 @@ static NSMutableDictionary*globalCustomHostMapTable(){
     free(classes);
 
 }
+
 + (BOOL)registerClass:(Class<JFRouterTypeProtocol>)protocolClass {
     if ([protocolClass respondsToSelector:@selector(scheme)]) {
         NSString *scheme = [protocolClass scheme];
         if (scheme.length) {
-            globalRouterMapTable()[scheme] = protocolClass;
+            routerMapTable()[scheme] = protocolClass;
             return YES;
         }
     }
     return NO;
 }
+
 + (void)unregisterClass:(Class<JFRouterTypeProtocol>)protocolClass {
-    if ([globalRouterMapTable().allValues containsObject:protocolClass]) {
+    if ([routerMapTable().allValues containsObject:protocolClass]) {
         NSString *scheme = [protocolClass scheme];
-        [globalRouterMapTable() removeObjectForKey:scheme];
+        [routerMapTable() removeObjectForKey:scheme];
     }
 }
+
 + (NSString *)scheme {
     return nil;
 }
@@ -88,7 +91,7 @@ static NSMutableDictionary*globalCustomHostMapTable(){
 + (id)objectForURL:(NSString *)URL withUserInfo:(NSDictionary *)userInfo {
     NSString *scheme = [self schemeForURL:URL];
     if (scheme.length) {
-        Class<JFRouterTypeProtocol> cls = globalRouterMapTable()[scheme];
+        Class <JFRouterTypeProtocol> cls = routerMapTable()[scheme];
         if (cls) {
             return [cls objectForURL:[self replaceCustomHostWithURL:URL] withUserInfo:userInfo];
         }
@@ -108,7 +111,7 @@ static NSMutableDictionary*globalCustomHostMapTable(){
 + (void)openURL:(NSString *)URL withUserInfo:(NSDictionary *)userInfo completion:(void (^)(id))completion {
     NSString *scheme = [self schemeForURL:URL];
     if (scheme.length) {
-        Class<JFRouterTypeProtocol> cls = globalRouterMapTable()[scheme];
+        Class <JFRouterTypeProtocol> cls = routerMapTable()[scheme];
         if (cls) {
             [cls openURL:[self replaceCustomHostWithURL:URL] withUserInfo:userInfo completion:completion];
         }
@@ -124,13 +127,14 @@ static NSMutableDictionary*globalCustomHostMapTable(){
         return nil;
     }
 }
-+ (NSString *)replaceCustomHostWithURL:(NSString *)URL{
+
++ (NSString *)replaceCustomHostWithURL:(NSString *)URL {
     NSString *host = [NSURL URLWithString:URL].host;
     if (host) {
         NSRange range = [URL rangeOfString:host];
         if (range.location != NSNotFound) {
-            Class cls = globalCustomHostMapTable()[host];
-            if (cls ) {
+            Class cls = customHostMapTable()[host];
+            if (cls) {
                 URL = [URL stringByReplacingCharactersInRange:range withString:NSStringFromClass(cls)];
             }
         }

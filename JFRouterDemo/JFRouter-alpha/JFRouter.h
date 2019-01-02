@@ -10,9 +10,11 @@
 #import "JFRouterProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
 @interface JFRouter : NSObject <JFRouterProtocol>
-+ (BOOL)registerClass:(Class<JFRouterTypeProtocol>)protocolClass;
-+ (void)unregisterClass:(Class<JFRouterTypeProtocol>)protocolClass;
++ (BOOL)registerClass:(Class <JFRouterTypeProtocol>)protocolClass;
+
++ (void)unregisterClass:(Class <JFRouterTypeProtocol>)protocolClass;
 @end
 
 NS_ASSUME_NONNULL_END
