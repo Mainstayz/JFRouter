@@ -28,12 +28,19 @@
         return nil;
     }
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters addEntriesFromDictionary:[self parametersWithURL:aURL]?:@{}];
-    [parameters addEntriesFromDictionary:userInfo?:@{}];
+    [parameters addEntriesFromDictionary:[self parametersWithURL:aURL] ?: @{}];
+    [parameters addEntriesFromDictionary:userInfo ?: @{}];
     NSString *fName = [self funcNameWithURL:aURL];
-    SEL sel = !fName.length ? ROUTER_INITIALIZE_SEL : NSSelectorFromString([ROUTER_PRE_OC stringByAppendingFormat:@"_%@",fName]);
-    return [cls performSelector:sel withObject:parameters];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    SEL sel = !fName.length ? ROUTER_INITIALIZE_SEL : NSSelectorFromString([ROUTER_PRE_OC stringByAppendingFormat:@"_%@", fName]);
+#pragma clang diagnostic pop
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    return [cls performSelector:sel withObject:parameters];
+#pragma clang diagnostic pop
+
 }
 
 + (void)openURL:(nonnull NSString *)URL {
@@ -54,11 +61,18 @@
         return;
     }
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters addEntriesFromDictionary:[self parametersWithURL:aURL]?:@{}];
-    [parameters addEntriesFromDictionary:userInfo?:@{}];
+    [parameters addEntriesFromDictionary:[self parametersWithURL:aURL] ?: @{}];
+    [parameters addEntriesFromDictionary:userInfo ?: @{}];
     NSString *fName = [self funcNameWithURL:aURL];
-    SEL sel = !fName.length ? ROUTER_INITIALIZE_SEL : NSSelectorFromString([ROUTER_PRE_OC stringByAppendingFormat:@"_%@callback:",fName]);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    SEL sel = !fName.length ? ROUTER_INITIALIZE_SEL : NSSelectorFromString([ROUTER_PRE_OC stringByAppendingFormat:@"_%@callback:", fName]);
+#pragma clang diagnostic pop
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [cls performSelector:sel withObject:parameters withObject:completion];
+#pragma clang diagnostic pop
 
 }
 

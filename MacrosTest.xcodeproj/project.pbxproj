@@ -22,6 +22,7 @@
 		3AB96FE621DD05F300329721 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3AB96FE521DD05F300329721 /* main.c */; };
 		3AB96FEC21DD330100329721 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB96FEB21DD330100329721 /* MainTableViewController.m */; };
 		3AB96FEF21DD34D700329721 /* ServiceA.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB96FEE21DD34D700329721 /* ServiceA.m */; };
+		3AB96FF121DD3AD100329721 /* JFRouterMacroDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AB96FF021DD3AD100329721 /* JFRouterMacroDefine.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		3AB96FEB21DD330100329721 /* MainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
 		3AB96FED21DD34D700329721 /* ServiceA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceA.h; sourceTree = "<group>"; };
 		3AB96FEE21DD34D700329721 /* ServiceA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceA.m; sourceTree = "<group>"; };
+		3AB96FF021DD3AD100329721 /* JFRouterMacroDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFRouterMacroDefine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 				3A0ED31E21DBB35800444A56 /* JFRouter.h */,
 				3A0ED31F21DBB35800444A56 /* JFRouter.m */,
 				3A0ED32121DBC85F00444A56 /* JFRouterProtocol.h */,
+				3AB96FF021DD3AD100329721 /* JFRouterMacroDefine.h */,
 			);
 			path = "JFRouter-alpha";
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				3AB96FEC21DD330100329721 /* MainTableViewController.m in Sources */,
 				3A0ED32021DBB35800444A56 /* JFRouter.m in Sources */,
 				3A0ED32521DBD3DF00444A56 /* JFWalletTypeRouter.m in Sources */,
+				3AB96FF121DD3AD100329721 /* JFRouterMacroDefine.h in Sources */,
 				3A0ED2EC21DBADCD00444A56 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,8 +12,6 @@
 @implementation MainTableViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    SEL sel = ROUTER_INITIALIZE_SEL;
-    NSLog(@"%@",NSStringFromSelector(sel));
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {

@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "JFRouterProtocol.h"
-@interface ViewController () <JFRouterMapProtocol>
+@interface ViewController ()
 
 @end
 
