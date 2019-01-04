@@ -8,6 +8,7 @@
 
 #import "MainTableViewController.h"
 #import "JFRouter.h"
+#import "JFRouterDemo-Swift.h"
 
 @implementation MainTableViewController
 - (void)viewDidLoad {
@@ -29,7 +30,30 @@
                 NSLog(@"%@",result);
             }];
         }
+            //            [ServiveSwift foo];
+            //            NSLog(@"+++%@",NSClassFromString(@"JFRouterDemo.ServiveSwift"));
+            //            NSLog(@"---%@",NSClassFromString(@"ServiveSwift"));
+
+        case 3:{
+            [JFRouter objectForURL:@"jfwallet://JFRouterDemo.ServiveSwift"];
+        }
             break;
+        case 4:{
+            [JFRouter objectForURL:@"jfwallet://JFRouterDemo.ServiveSwift/foo?y=x!"];
+        }
+            break;
+        case 5:{
+            [JFRouter openURL:@"jfwallet://JFRouterDemo.ServiveSwift/xxxx" completion:^(id  _Nonnull result) {
+                NSLog(@"%@",result);
+            }];
+
+        }
+            break;
+        case 6:{
+            [JFRouter objectForURL:@"jfwallet://ServiveSwift/foo?y=x!"];
+        }
+            break;
+
             
         default:
             break;

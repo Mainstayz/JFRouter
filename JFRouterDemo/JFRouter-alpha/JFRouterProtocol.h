@@ -11,21 +11,18 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol JFRouterMapProtocol <NSObject>
+@required
 ROUTER_SCHEME;
-
 @optional
 ROUTER_CUSTOM_HOST;
 @end
 
 @protocol JFRouterTypeProtocol <JFRouterMapProtocol>
 + (nullable id)objectForURL:(nonnull NSString *)URL;
-
 + (nullable id)objectForURL:(nonnull NSString *)URL withUserInfo:(nullable NSDictionary *)userInfo;
 
 + (void)openURL:(nonnull NSString *)URL;
-
 + (void)openURL:(nonnull NSString *)URL completion:(nullable void (^)(id result))completion;
-
 + (void)openURL:(nonnull NSString *)URL withUserInfo:(nullable NSDictionary *)userInfo completion:(nullable void (^)(id result))completion;
 @end
 

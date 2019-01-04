@@ -49,6 +49,7 @@ static NSMutableDictionary *customHostMapTable() {
     Protocol * protocol = @protocol(JFRouterMapProtocol);
     for (int idx = 0; idx < count; idx++) {
         Class cls = NSClassFromString([NSString stringWithUTF8String:classes[idx]]);
+        NSLog(@"%@",cls);
         if (class_getClassMethod(cls, @selector(conformsToProtocol:)) && [cls conformsToProtocol:protocol]) {
             if ([cls respondsToSelector:@selector(customHost)]) {
                 NSString *customHost = [cls customHost];
